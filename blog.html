@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Pedro Cordova Abogado</title>
+<meta name="description" content="Artículos jurídicos sobre derecho civil, empresarial y patrimonial en Ecuador. Por el Ab. Pedro Cordova.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="golden.css">
+<style>
+/* ── BLOG-SPECIFIC ── */
+
+/* Blog grid: 3 equal Fibonacci columns */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--border);
+}
+.blog-card {
+  padding: var(--s5) var(--s4);        /* 55px 34px */
+  border-right: 1px solid var(--border);
+  cursor: pointer; transition: background 0.2s;
+  display: flex; flex-direction: column;
+}
+.blog-card:last-of-type { border-right: none; }
+.blog-card:hover { background: var(--beige); }
+
+.blog-date {
+  font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--muted);
+  margin-bottom: var(--s2);            /* 13px */
+}
+.blog-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(var(--t1), 1.5vw, var(--t2));  /* 13→21px */
+  font-weight: 600; line-height: var(--lh-tight);
+  margin-bottom: var(--s2);            /* 13px */
+}
+.blog-excerpt {
+  font-size: var(--t1); color: var(--muted);
+  line-height: var(--lh-normal); margin-bottom: var(--s4);  /* 34px */
+  flex: 1;
+}
+.blog-read {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--accent); margin-top: auto;
+}
+
+/* Article expanded panel — full-width below grid */
+.article-full {
+  display: none; grid-column: 1 / -1;
+  padding: var(--s6) var(--s6);        /* 89px */
+  border-top: 1px solid var(--border);
+  background: var(--beige);
+}
+.article-full.open { display: block; }
+.article-body { max-width: 61.803%;  max-width: clamp(400px, 61.803%, 720px); }
+.article-body h3 {
+  font-family: var(--ff-serif);
+  font-size: clamp(var(--t2), 2vw, var(--t3));  /* 21→34px */
+  font-weight: 600; margin-bottom: var(--s3);   /* 21px */
+  line-height: var(--lh-tight);
+}
+.article-body p {
+  font-size: var(--t1); color: var(--muted);
+  line-height: var(--lh-loose);        /* φ×1.27 ≈ 2.06 — generous reading rhythm */
+  margin-bottom: var(--s3);
+}
+.article-close {
+  display: inline-flex; align-items: center; gap: var(--s1);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); cursor: pointer;
+  margin-bottom: var(--s4);            /* 34px */
+  background: none; border: none; font-family: inherit;
+  transition: color 0.2s;
+}
+.article-close:hover { color: var(--black); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Pedro Cordova <span>· Abogado</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a></li>
+    <li><a href="sobre-mi.html" data-es>Sobre Mí</a><a href="sobre-mi.html" data-en>About</a></li>
+    <li><a href="servicios.html" data-es>Servicios</a><a href="servicios.html" data-en>Services</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contacto.html" data-es>Contacto</a><a href="contacto.html" data-en>Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()" id="lang-btn">EN</button>
+    <a href="contacto.html" class="nav-cta" data-es>Consulta</a>
+    <a href="contacto.html" class="nav-cta" data-en>Consult</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-tag">Blog</div>
+  <h1 data-es>Artículos &amp; <em>Perspectivas</em></h1>
+  <h1 data-en>Articles &amp; <em>Insights</em></h1>
+  <p class="page-header-sub" data-es>Análisis jurídicos claros y prácticos sobre derecho civil, empresarial y patrimonial en Ecuador.</p>
+  <p class="page-header-sub" data-en>Clear, practical legal analysis on civil, business, and estate law in Ecuador.</p>
+</div>
+
+<section style="background:var(--beige);">
+  <div class="blog-grid">
+
+    <div class="blog-card reveal" onclick="toggleArticle('art1',this)">
+      <div class="blog-date">Abr 2026</div>
+      <div class="blog-pill" data-es>Derecho Empresarial</div><div class="blog-pill" data-en>Business Law</div>
+      <h3 class="blog-title" data-es>Cómo constituir una empresa en Ecuador: pasos clave en 2026</h3>
+      <h3 class="blog-title" data-en>How to incorporate a company in Ecuador: key steps in 2026</h3>
+      <p class="blog-excerpt" data-es>Una guía práctica sobre los requisitos legales, tiempos y costos involucrados en la constitución de una compañía bajo la legislación ecuatoriana vigente.</p>
+      <p class="blog-excerpt" data-en>A practical guide on legal requirements, timelines, and costs for incorporating a company under current Ecuadorian law.</p>
+      <span class="blog-read" data-es>Leer artículo ↓</span><span class="blog-read" data-en>Read article ↓</span>
+    </div>
+
+    <div class="blog-card reveal" onclick="toggleArticle('art2',this)">
+      <div class="blog-date">Mar 2026</div>
+      <div class="blog-pill" data-es>Contratos</div><div class="blog-pill" data-en>Contracts</div>
+      <h3 class="blog-title" data-es>5 cláusulas que todo contrato comercial debe incluir</h3>
+      <h3 class="blog-title" data-en>5 clauses every commercial contract must include</h3>
+      <p class="blog-excerpt" data-es>Análisis de las cláusulas fundamentales que protegen a las partes en transacciones comerciales y cómo redactarlas correctamente.</p>
+      <p class="blog-excerpt" data-en>Analysis of fundamental clauses that protect parties in commercial transactions and how to draft them correctly.</p>
+      <span class="blog-read" data-es>Leer artículo ↓</span><span class="blog-read" data-en>Read article ↓</span>
+    </div>
+
+    <div class="blog-card reveal" onclick="toggleArticle('art3',this)">
+      <div class="blog-date">Feb 2026</div>
+      <div class="blog-pill" data-es>Litigación</div><div class="blog-pill" data-en>Litigation</div>
+      <h3 class="blog-title" data-es>Mediación vs. litigio: ¿cuál conviene a su empresa?</h3>
+      <h3 class="blog-title" data-en>Mediation vs. litigation: which is right for your business?</h3>
+      <p class="blog-excerpt" data-es>Comparativa de los dos caminos para resolver conflictos empresariales, evaluando costos, tiempos y resultados probables.</p>
+      <p class="blog-excerpt" data-en>A comparison of both paths for resolving business disputes, evaluating costs, timelines, and likely outcomes.</p>
+      <span class="blog-read" data-es>Leer artículo ↓</span><span class="blog-read" data-en>Read article ↓</span>
+    </div>
+
+    <!-- Expanded articles -->
+    <div class="article-full" id="art1">
+      <div class="article-body">
+        <button class="article-close" onclick="closeArticle('art1')">← <span data-es>Cerrar</span><span data-en>Close</span></button>
+        <h3 data-es>Cómo constituir una empresa en Ecuador: pasos clave en 2026</h3>
+        <h3 data-en>How to incorporate a company in Ecuador: key steps in 2026</h3>
+        <p data-es>Constituir una empresa en Ecuador implica seguir un proceso legal estructurado ante la Superintendencia de Compañías. Los tipos más comunes son la Compañía Limitada (Cía. Ltda.) y la Sociedad Anónima (S.A.), cada una con requisitos de capital mínimo y número de socios distintos.</p>
+        <p data-en>Incorporating a company in Ecuador involves following a structured legal process before the Superintendence of Companies. The most common types are the Limited Company (Cía. Ltda.) and Corporation (S.A.), each with different minimum capital and shareholder requirements.</p>
+        <p data-es>El proceso incluye: aprobación de la denominación social, elaboración de la minuta de constitución, escritura pública notarial, inscripción en el Registro Mercantil y obtención del RUC en el SRI. El tiempo estimado es de 3 a 6 semanas.</p>
+        <p data-en>The process includes: approval of the company name, drafting the incorporation minutes, notarial public deed, registration in the Commercial Registry, and obtaining the RUC at the SRI. Estimated time: 3 to 6 weeks.</p>
+        <p data-es>Contar con asesoría jurídica especializada desde el inicio garantiza que la estructura societaria sea la adecuada para sus objetivos de negocio y minimice riesgos legales futuros.</p>
+        <p data-en>Having specialized legal advice from the start ensures that the corporate structure is appropriate for your business objectives and minimizes future legal risks.</p>
+      </div>
+    </div>
+
+    <div class="article-full" id="art2">
+      <div class="article-body">
+        <button class="article-close" onclick="closeArticle('art2')">← <span data-es>Cerrar</span><span data-en>Close</span></button>
+        <h3 data-es>5 cláusulas que todo contrato comercial debe incluir</h3>
+        <h3 data-en>5 clauses every commercial contract must include</h3>
+        <p data-es><strong>1. Objeto del contrato:</strong> Define con precisión qué se está acordando, evitando ambigüedades que generen conflictos futuros.</p>
+        <p data-en><strong>1. Contract subject matter:</strong> Precisely defines what is being agreed upon, avoiding ambiguities that generate future conflicts.</p>
+        <p data-es><strong>2. Precio y forma de pago:</strong> Establece valores, plazos, moneda y consecuencias del incumplimiento de pago.</p>
+        <p data-en><strong>2. Price and payment terms:</strong> Establishes values, deadlines, currency, and consequences of payment default.</p>
+        <p data-es><strong>3. Cláusula de confidencialidad:</strong> Protege información sensible compartida entre las partes durante la relación contractual.</p>
+        <p data-en><strong>3. Confidentiality clause:</strong> Protects sensitive information shared between parties during the contractual relationship.</p>
+        <p data-es><strong>4. Resolución de conflictos:</strong> Define si las disputas se resolverán por vía judicial, mediación o arbitraje, y en qué jurisdicción.</p>
+        <p data-en><strong>4. Dispute resolution:</strong> Defines whether disputes will be resolved through court, mediation, or arbitration, and in which jurisdiction.</p>
+        <p data-es><strong>5. Causas de terminación:</strong> Establece las circunstancias bajo las cuales cualquiera de las partes puede dar por terminado el contrato sin incurrir en responsabilidad.</p>
+        <p data-en><strong>5. Termination causes:</strong> Establishes circumstances under which either party may terminate the contract without incurring liability.</p>
+      </div>
+    </div>
+
+    <div class="article-full" id="art3">
+      <div class="article-body">
+        <button class="article-close" onclick="closeArticle('art3')">← <span data-es>Cerrar</span><span data-en>Close</span></button>
+        <h3 data-es>Mediación vs. litigio: ¿cuál conviene a su empresa?</h3>
+        <h3 data-en>Mediation vs. litigation: which is right for your business?</h3>
+        <p data-es>La mediación es un proceso voluntario y confidencial donde un tercero neutral facilita el diálogo entre las partes para alcanzar un acuerdo. El litigio, en cambio, implica someter el conflicto a la decisión de un juez.</p>
+        <p data-en>Mediation is a voluntary, confidential process where a neutral third party facilitates dialogue between parties to reach an agreement. Litigation, on the other hand, involves submitting the conflict to a judge's decision.</p>
+        <p data-es><strong>Ventajas de la mediación:</strong> Rapidez (semanas vs. meses o años), costos reducidos, confidencialidad total y preservación de la relación comercial entre las partes.</p>
+        <p data-en><strong>Mediation advantages:</strong> Speed (weeks vs. months or years), reduced costs, full confidentiality, and preservation of the business relationship between parties.</p>
+        <p data-es><strong>Cuándo litigar:</strong> Cuando la otra parte actúa de mala fe, cuando se necesita establecer un precedente legal, o cuando el monto en disputa justifica el proceso judicial.</p>
+        <p data-en><strong>When to litigate:</strong> When the other party acts in bad faith, when a legal precedent needs to be established, or when the disputed amount justifies the judicial process.</p>
+        <p data-es>Como mediador certificado, puedo asesorarle sobre cuál es el mejor camino para su caso específico antes de tomar cualquier decisión.</p>
+        <p data-en>As a certified mediator, I can advise you on the best path for your specific case before making any decision.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Pedro Cordova <span>— Abogado</span></div>
+  <ul class="footer-links">
+    <li><a href="sobre-mi.html" data-es>Sobre Mí</a><a href="sobre-mi.html" data-en>About</a></li>
+    <li><a href="servicios.html" data-es>Servicios</a><a href="servicios.html" data-en>Services</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contacto.html" data-es>Contacto</a><a href="contacto.html" data-en>Contact</a></li>
+  </ul>
+  <ul class="footer-socials">
+    <li><a href="https://linkedin.com/in/pedrojcordovaec" target="_blank" class="social-link" aria-label="LinkedIn">in</a></li>
+    <li><a href="https://wa.me/593999751274" target="_blank" class="social-link" aria-label="WhatsApp">●</a></li>
+    <li><a href="mailto:pjcnotificaciones@gmail.com" class="social-link" aria-label="Email">✉</a></li>
+  </ul>
+  <div class="footer-bottom">© 2026 Pedro Cordova · <span data-es>Todos los derechos reservados</span><span data-en>All rights reserved</span></div>
+</footer>
+
+<div id="tweaks-panel">
+  <div class="tweaks-title">Tweaks</div>
+  <div class="tweak-row">
+    <span class="tweak-label" data-es>Idioma</span><span class="tweak-label" data-en>Language</span>
+    <div class="toggle-group">
+      <div class="toggle-opt active" id="tw-lang-es" onclick="setLang('es')">ES</div>
+      <div class="toggle-opt" id="tw-lang-en" onclick="setLang('en')">EN</div>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <span class="tweak-label">Acento</span>
+    <div class="toggle-group">
+      <div class="toggle-opt active" onclick="setAccent('#8B6F47',this)">Tierra</div>
+      <div class="toggle-opt" onclick="setAccent('#5A6B4E',this)">Verde</div>
+      <div class="toggle-opt" onclick="setAccent('#4A5E73',this)">Azul</div>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/593999751274?text=Hola%20Ab.%20Cordova%2C%20me%20gustar%C3%ADa%20una%20consulta%20legal." target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+let openArt=null;
+function toggleArticle(id,card){
+  const el=document.getElementById(id);
+  if(openArt&&openArt!==id)document.getElementById(openArt).classList.remove('open');
+  el.classList.toggle('open');
+  openArt=el.classList.contains('open')?id:null;
+}
+function closeArticle(id){document.getElementById(id).classList.remove('open');openArt=null;}
+function initLang(){const saved=localStorage.getItem('pc-lang-user-choice');if(saved==='en'){document.body.classList.add('lang-en');const b=document.getElementById('lang-btn');if(b)b.textContent='ES';syncLangToggles('en');}else{document.body.classList.remove('lang-en');const b=document.getElementById('lang-btn');if(b)b.textContent='EN';syncLangToggles('es');}}
+function toggleLang(){setLang(document.body.classList.contains('lang-en')?'es':'en');}
+function setLang(lang){document.body.classList.toggle('lang-en',lang==='en');const b=document.getElementById('lang-btn');if(b)b.textContent=lang==='es'?'EN':'ES';localStorage.setItem('pc-lang-user-choice',lang);localStorage.setItem('pc-lang',lang);syncLangToggles(lang);}
+function syncLangToggles(lang){const es=document.getElementById('tw-lang-es'),en=document.getElementById('tw-lang-en');if(es)es.classList.toggle('active',lang==='es');if(en)en.classList.toggle('active',lang==='en');}
+function initAccent(){const saved=localStorage.getItem('pc-accent');if(saved)document.documentElement.style.setProperty('--accent',saved);}
+function setAccent(color,el){document.querySelectorAll('.toggle-opt').forEach(o=>{if(o.parentElement===el.parentElement)o.classList.remove('active');});el.classList.add('active');document.documentElement.style.setProperty('--accent',color);localStorage.setItem('pc-accent',color);}
+function initTweaks(){window.addEventListener('message',e=>{if(e.data?.type==='__activate_edit_mode')document.getElementById('tweaks-panel')?.classList.add('open');if(e.data?.type==='__deactivate_edit_mode')document.getElementById('tweaks-panel')?.classList.remove('open');});window.parent.postMessage({type:'__edit_mode_available'},'*');}
+function initReveal(){const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));}
+function initNav(){const page=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.nav-links a').forEach(a=>{if(a.getAttribute('href')===page)a.classList.add('active');});}
+document.addEventListener('DOMContentLoaded',()=>{initLang();initAccent();initTweaks();initReveal();initNav();});
+</script>
+</body>
+</html>
