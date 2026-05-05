@@ -248,5 +248,6 @@ function initReveal(){const obs=new IntersectionObserver(entries=>{entries.forEa
 function initNav(){const page=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.nav-links a').forEach(a=>{if(a.getAttribute('href')===page)a.classList.add('active');});}
 document.addEventListener('DOMContentLoaded',()=>{initLang();initAccent();initTweaks();initReveal();initNav();});
 </script>
+<script src="responsive-nav.js"></script>
 </body>
 </html>

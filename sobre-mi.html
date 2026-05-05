@@ -304,5 +304,6 @@ function initNav(){const page=location.pathname.split('/').pop()||'index.html';d
 function initPhoto(){const imgs=document.querySelectorAll('[data-photo]');if(window.PEDRO_PHOTO)imgs.forEach(img=>img.src=window.PEDRO_PHOTO);}
 document.addEventListener('DOMContentLoaded',()=>{initLang();initAccent();initTweaks();initReveal();initNav();initPhoto();});
 </script>
+<script src="responsive-nav.js"></script>
 </body>
 </html>
