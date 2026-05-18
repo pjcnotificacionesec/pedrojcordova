@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios — Pedro Cordova Abogado</title>
+<meta name="description" content="Litigación civil, asesoría empresarial, planificación patrimonial, derecho laboral, mediación, contratos y ocultamiento de datos en el sistema judicial (SATJE). Cuenca y Quito, Ecuador — cobertura nacional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="golden.css">
+<style>
+/* ── SERVICIOS-SPECIFIC ── */
+
+/* FEATURED SERVICE — golden split 61.8 / 38.2 */
+.featured-grid {
+  display: grid;
+  grid-template-columns: 61.803fr 38.197fr;
+}
+.featured-left {
+  padding: var(--s6) var(--s5);        /* 89px 55px */
+  display: flex; flex-direction: column; justify-content: center;
+  gap: var(--s3);                      /* 21px */
+  border-right: 1px solid var(--border);
+}
+.featured-right {
+  padding: var(--s6) var(--s4);        /* 89px 34px */
+  background: var(--beige);
+  display: flex; flex-direction: column; justify-content: center;
+  gap: var(--s2);                      /* 13px */
+}
+.featured-tag {
+  display: flex; align-items: center; gap: var(--s2);
+}
+.featured-tag-line { display: inline-block; width: var(--s4); height: 1px; background: var(--accent); }
+.featured-tag-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent);
+}
+.featured-h2 {
+  font-family: var(--ff-serif);
+  font-size: clamp(var(--t2), 3.5vw, var(--t3));  /* 21→34px */
+  font-weight: 600; letter-spacing: -0.02em;
+  line-height: var(--lh-tight);
+}
+.featured-h2 em { font-style: italic; color: var(--accent); }
+.featured-desc {
+  font-size: var(--t1); color: var(--muted);
+  line-height: var(--lh-normal);
+  max-width: 55ch;
+}
+.feat-bullet {
+  display: flex; align-items: flex-start; gap: var(--s3);  /* 21px */
+  padding: var(--s2) var(--s3);        /* 13px 21px */
+  background: var(--cream); border: 1px solid var(--border);
+}
+.feat-bullet-dot {
+  width: var(--s1); height: var(--s1); /* 8px Fibonacci dot */
+  border-radius: 50%; background: var(--accent);
+  flex-shrink: 0; margin-top: 0.45rem;
+}
+.feat-bullet-text { font-size: 0.84rem; line-height: var(--lh-normal); }
+
+/* SERVICE DETAIL GRID — 2 equal cols with golden inner padding */
+.svc-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.svc-detail {
+  padding: var(--s6) var(--s5);        /* 89px 55px */
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.svc-detail:nth-child(2n) { border-right: none; }
+.svc-detail:hover { background: var(--beige); }
+.svc-num {
+  font-family: var(--ff-serif); font-size: 0.8rem;
+  color: var(--accent); margin-bottom: var(--s3);  /* 21px */
+  font-style: italic;
+}
+.svc-name {
+  font-family: var(--ff-serif);
+  font-size: clamp(var(--t1), 1.6vw, var(--t2));  /* 13→21px */
+  font-weight: 600; margin-bottom: var(--s2);      /* 13px */
+  line-height: var(--lh-tight);
+}
+.svc-desc {
+  font-size: var(--t1); color: var(--muted);
+  line-height: var(--lh-normal); margin-bottom: var(--s4);  /* 34px */
+}
+.svc-bullets { list-style: none; display: flex; flex-direction: column; gap: var(--s2); margin-bottom: var(--s5); } /* 13px / 55px */
+.svc-bullets li {
+  font-size: 0.83rem; color: var(--black);
+  display: flex; align-items: center; gap: var(--s2);  /* 13px */
+  line-height: var(--lh-normal);
+}
+.svc-bullets li::before {
+  content: ''; width: var(--s1); height: var(--s1);  /* 8px dot */
+  border-radius: 50%; background: var(--accent); flex-shrink: 0;
+}
+.svc-cta-link {
+  display: inline-flex; align-items: center; gap: var(--s1);  /* 8px */
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent);
+  border-bottom: 1px solid transparent; transition: border-color 0.2s;
+}
+.svc-cta-link:hover { border-bottom-color: var(--accent); }
+
+/* CTA BOTTOM BAND — golden */
+.cta-bottom {
+  display: grid;
+  grid-template-columns: 61.803fr 38.197fr;
+  align-items: center; gap: var(--s5);
+  padding: var(--s6) var(--s6);
+  background: var(--black); color: var(--cream);
+}
+.cta-bottom-title {
+  font-family: var(--ff-serif);
+  font-size: clamp(var(--t2), 2.5vw, var(--t3));
+  font-weight: 600; letter-spacing: -0.02em; line-height: var(--lh-tight);
+}
+.cta-bottom-title em { font-style: italic; color: var(--accent); }
+.cta-bottom-sub { font-size: var(--t1); color: rgba(254,252,250,0.45); margin-top: var(--s2); }
+.cta-bottom-btn {
+  justify-self: end;
+  display: inline-flex; align-items: center; gap: var(--s2);
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: var(--s3) var(--s4);
+  border: 1px solid var(--accent); color: var(--accent);
+  white-space: nowrap; transition: all 0.2s; text-decoration: none;
+}
+.cta-bottom-btn:hover { background: var(--accent); color: var(--cream); }
+
+/* ── SATJE NOTICE BLOCK (subtle, within Planificación vocabulary) ── */
+.req-block {
+  border-left: 2px solid var(--accent);
+  padding: var(--s2) var(--s3);
+  background: var(--beige);
+  display: flex; flex-direction: column; gap: var(--s2);
+  margin-top: var(--s2);
+}
+.req-label {
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted);
+}
+.req-list {
+  list-style: none; display: flex; flex-direction: column; gap: 4px;
+}
+.req-list li {
+  font-size: 0.88rem; line-height: 1.5;
+  position: relative; padding-left: 14px;
+  color: var(--black);
+}
+.req-list li::before {
+  content: ''; position: absolute; left: 0; top: 9px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent);
+}
+.req-note {
+  font-size: 0.78rem; color: var(--muted);
+  font-style: italic; line-height: 1.5;
+  border-top: 1px solid var(--border); padding-top: var(--s2);
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Pedro Cordova <span>· Abogado</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-es>Inicio</a><a href="index.html" data-en>Home</a></li>
+    <li><a href="sobre-mi.html" data-es>Sobre Mí</a><a href="sobre-mi.html" data-en>About</a></li>
+    <li><a href="servicios.html" data-es>Servicios</a><a href="servicios.html" data-en>Services</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contacto.html" data-es>Contacto</a><a href="contacto.html" data-en>Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-btn" onclick="toggleLang()" id="lang-btn">EN</button>
+    <a href="contacto.html" class="nav-cta" data-es>Consulta</a>
+    <a href="contacto.html" class="nav-cta" data-en>Consult</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-tag" data-es>Áreas de práctica</div>
+  <div class="page-header-tag" data-en>Practice areas</div>
+  <h1 data-es>Soluciones legales para cada <em>desafío.</em></h1>
+  <h1 data-en>Legal solutions for every <em>challenge.</em></h1>
+  <p class="page-header-sub" data-es>Asesoría integral en derecho civil, empresarial y patrimonial. Cuenca — cobertura nacional.</p>
+  <p class="page-header-sub" data-en>Comprehensive advisory in civil, business, and estate law. Cuenca — nationwide coverage.</p>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-bar" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item" data-es>Litigación Civil</span><span class="marquee-item" data-en>Civil Litigation</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" data-es>Asesoría Empresarial</span><span class="marquee-item" data-en>Business Advisory</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" data-es>Planificación Patrimonial</span><span class="marquee-item" data-en>Estate Planning</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" data-es>Derecho Laboral</span><span class="marquee-item" data-en>Labor Law</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" data-es>Mediación &amp; Arbitraje</span><span class="marquee-item" data-en>Mediation &amp; Arbitration</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" style="color:var(--accent);" data-es>Ocultamiento de Datos · SATJE</span><span class="marquee-item" style="color:var(--accent);" data-en>Data Concealment · SATJE</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" data-es>Litigación Civil</span><span class="marquee-item" data-en>Civil Litigation</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" data-es>Asesoría Empresarial</span><span class="marquee-item" data-en>Business Advisory</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" data-es>Planificación Patrimonial</span><span class="marquee-item" data-en>Estate Planning</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" data-es>Derecho Laboral</span><span class="marquee-item" data-en>Labor Law</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" data-es>Mediación &amp; Arbitraje</span><span class="marquee-item" data-en>Mediation &amp; Arbitration</span>
+    <span class="marquee-item marquee-sep">◆</span>
+    <span class="marquee-item" style="color:var(--accent);" data-es>Ocultamiento de Datos · SATJE</span><span class="marquee-item" style="color:var(--accent);" data-en>Data Concealment · SATJE</span>
+    <span class="marquee-item marquee-sep">◆</span>
+  </div>
+</div>
+
+<!-- FEATURED: PLANIFICACIÓN PATRIMONIAL — golden 61.8 / 38.2 -->
+<section style="border-bottom:1px solid var(--border);">
+  <div class="featured-grid">
+    <div class="featured-left reveal">
+      <div class="featured-tag">
+        <span class="featured-tag-line"></span>
+        <span class="featured-tag-label" data-es>Servicio estrella</span>
+        <span class="featured-tag-label" data-en>Flagship service</span>
+      </div>
+      <h2 class="featured-h2" data-es>Planificación <em>Patrimonial</em></h2>
+      <h2 class="featured-h2" data-en>Estate <em>Planning</em></h2>
+      <p class="featured-desc" data-es>Proteja lo que ha construido. Estructure su legado con precisión — para su familia y su empresa. Sucesiones sin conflictos, soluciones confidenciales y personalizadas.</p>
+      <p class="featured-desc" data-en>Protect what you've built. Structure your legacy with precision. Conflict-free successions, confidential and personalized solutions.</p>
+      <a href="contacto.html" class="btn-primary" style="width:fit-content;" data-es>Consultar ahora →</a>
+      <a href="contacto.html" class="btn-primary" style="width:fit-content;" data-en>Inquire now →</a>
+    </div>
+    <div class="featured-right reveal">
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--s1);" data-es>¿Por qué es clave?</div>
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--s1);" data-en>Why it matters</div>
+      <div class="feat-bullet"><span class="feat-bullet-dot"></span><span class="feat-bullet-text" data-es>Planificación de sucesiones sin conflictos familiares</span><span class="feat-bullet-text" data-en>Conflict-free succession planning</span></div>
+      <div class="feat-bullet"><span class="feat-bullet-dot"></span><span class="feat-bullet-text" data-es>Protección de activos empresariales y familiares</span><span class="feat-bullet-text" data-en>Protection of business and family assets</span></div>
+      <div class="feat-bullet"><span class="feat-bullet-dot"></span><span class="feat-bullet-text" data-es>Estructuras fideicomisarias y testamentarias</span><span class="feat-bullet-text" data-en>Trust and testamentary structures</span></div>
+      <div class="feat-bullet"><span class="feat-bullet-dot"></span><span class="feat-bullet-text" data-es>Confidencialidad y discreción garantizadas</span><span class="feat-bullet-text" data-en>Guaranteed confidentiality and discretion</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ALL SERVICES — 2-col equal, golden padding -->
+<section>
+  <div class="svc-detail-grid">
+
+    <div class="svc-detail reveal">
+      <div class="svc-num">01</div>
+      <h2 class="svc-name" data-es>Litigación Civil</h2>
+      <h2 class="svc-name" data-en>Civil Litigation</h2>
+      <p class="svc-desc" data-es>Representación estratégica ante juzgados y tribunales civiles. Defensa sólida en disputas que requieren precisión técnica y profundo conocimiento del derecho probatorio.</p>
+      <p class="svc-desc" data-en>Strategic representation before civil courts and tribunals. Solid defense in disputes requiring technical precision and deep knowledge of evidentiary law.</p>
+      <ul class="svc-bullets">
+        <li data-es>Juicios de cobro e incumplimiento de contratos</li><li data-en>Collection suits and breach of contract</li>
+        <li data-es>Disputas patrimoniales y societarias</li><li data-en>Asset and corporate disputes</li>
+        <li data-es>Acciones reales y posesorias</li><li data-en>Real and possessory actions</li>
+        <li data-es>Impugnaciones y recursos de apelación</li><li data-en>Challenges and appeals</li>
+      </ul>
+      <a href="contacto.html" class="svc-cta-link"><span data-es>Consultar este servicio</span><span data-en>Inquire about this service</span> →</a>
+    </div>
+
+    <div class="svc-detail reveal">
+      <div class="svc-num">02</div>
+      <h2 class="svc-name" data-es>Asesoría Empresarial</h2>
+      <h2 class="svc-name" data-en>Business Advisory</h2>
+      <p class="svc-desc" data-es>Acompañamiento jurídico integral para empresas en crecimiento. Desde la constitución hasta la gestión del riesgo legal en operaciones cotidianas.</p>
+      <p class="svc-desc" data-en>Comprehensive legal support for growing businesses. From incorporation to daily operations risk management.</p>
+      <ul class="svc-bullets">
+        <li data-es>Constitución de compañías y estructuración societaria</li><li data-en>Company formation and corporate structuring</li>
+        <li data-es>Gobierno corporativo y compliance</li><li data-en>Corporate governance and compliance</li>
+        <li data-es>Fusiones, adquisiciones y reestructuraciones</li><li data-en>Mergers, acquisitions and restructuring</li>
+        <li data-es>Cumplimiento normativo UAFE</li><li data-en>UAFE regulatory compliance</li>
+      </ul>
+      <a href="contacto.html" class="svc-cta-link"><span data-es>Consultar este servicio</span><span data-en>Inquire about this service</span> →</a>
+    </div>
+
+    <div class="svc-detail reveal">
+      <div class="svc-num">03</div>
+      <h2 class="svc-name" data-es>Contratos Comerciales</h2>
+      <h2 class="svc-name" data-en>Commercial Contracts</h2>
+      <p class="svc-desc" data-es>Redacción, revisión y negociación de contratos comerciales. Documentos jurídicamente sólidos que protegen sus intereses en cada transacción.</p>
+      <p class="svc-desc" data-en>Drafting, reviewing, and negotiating commercial contracts. Legally sound documents protecting your interests in every transaction.</p>
+      <ul class="svc-bullets">
+        <li data-es>Contratos de compraventa y servicios</li><li data-en>Purchase, sale and service agreements</li>
+        <li data-es>Contratos de distribución y franquicias</li><li data-en>Distribution and franchise contracts</li>
+        <li data-es>Acuerdos de confidencialidad (NDA)</li><li data-en>Non-disclosure agreements (NDA)</li>
+        <li data-es>Revisión y due diligence contractual</li><li data-en>Contract review and due diligence</li>
+      </ul>
+      <a href="contacto.html" class="svc-cta-link"><span data-es>Consultar este servicio</span><span data-en>Inquire about this service</span> →</a>
+    </div>
+
+    <div class="svc-detail reveal">
+      <div class="svc-num">04</div>
+      <h2 class="svc-name" data-es>Derecho Laboral</h2>
+      <h2 class="svc-name" data-en>Labor Law</h2>
+      <p class="svc-desc" data-es>Asesoría en relaciones laborales para empleadores y trabajadores. Prevención de conflictos y defensa efectiva ante instancias administrativas y judiciales.</p>
+      <p class="svc-desc" data-en>Labor relations advisory for employers and employees. Conflict prevention and effective defense before administrative and judicial authorities.</p>
+      <ul class="svc-bullets">
+        <li data-es>Contratos de trabajo y reglamentos internos</li><li data-en>Employment contracts and internal policies</li>
+        <li data-es>Desahucio y liquidaciones laborales</li><li data-en>Terminations and labor settlements</li>
+        <li data-es>Procesos ante el Ministerio del Trabajo</li><li data-en>Ministry of Labor proceedings</li>
+        <li data-es>Patrocinio judicial en materia laboral</li><li data-en>Judicial representation in labor matters</li>
+      </ul>
+      <a href="contacto.html" class="svc-cta-link"><span data-es>Consultar este servicio</span><span data-en>Inquire about this service</span> →</a>
+    </div>
+
+    <div class="svc-detail reveal">
+      <div class="svc-num">05</div>
+      <h2 class="svc-name" data-es>Mediación &amp; Arbitraje</h2>
+      <h2 class="svc-name" data-en>Mediation &amp; Arbitration</h2>
+      <p class="svc-desc" data-es>Como mediador certificado por la Universidad de los Hemisferios, facilito soluciones ágiles, confidenciales y duraderas que evitan largos procesos judiciales.</p>
+      <p class="svc-desc" data-en>As a certified mediator from Universidad de los Hemisferios, I facilitate agile, confidential and lasting solutions that avoid lengthy court proceedings.</p>
+      <ul class="svc-bullets">
+        <li data-es>Mediación civil y comercial</li><li data-en>Civil and commercial mediation</li>
+        <li data-es>Arbitraje nacional e internacional</li><li data-en>Domestic and international arbitration</li>
+        <li data-es>Conflictos societarios y familiares</li><li data-en>Corporate and family disputes</li>
+        <li data-es>Actas de mediación con valor legal</li><li data-en>Legally binding mediation records</li>
+      </ul>
+      <a href="contacto.html" class="svc-cta-link"><span data-es>Consultar este servicio</span><span data-en>Inquire about this service</span> →</a>
+    </div>
+
+    <div class="svc-detail reveal">
+      <div class="svc-num">06</div>
+      <h2 class="svc-name" data-es>Consultoría Legal</h2>
+      <h2 class="svc-name" data-en>Legal Consulting</h2>
+      <p class="svc-desc" data-es>Asesoría preventiva para empresas y personas naturales. Identifique riesgos jurídicos antes de que se conviertan en problemas costosos.</p>
+      <p class="svc-desc" data-en>Preventive advisory for businesses and individuals. Identify legal risks before they become costly problems.</p>
+      <ul class="svc-bullets">
+        <li data-es>Auditorías legales empresariales</li><li data-en>Corporate legal audits</li>
+        <li data-es>Opiniones jurídicas y dictámenes</li><li data-en>Legal opinions and rulings</li>
+        <li data-es>Consulta virtual y presencial</li><li data-en>Virtual and in-person consultation</li>
+      </ul>
+      <a href="contacto.html" class="svc-cta-link"><span data-es>Consultar este servicio</span><span data-en>Inquire about this service</span> →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SATJE — Ocultamiento de Datos (mismo lenguaje visual que Planificación) -->
+<section style="border-top:1px solid var(--border);border-bottom:1px solid var(--border);" id="ocultamiento-satje">
+  <div class="featured-grid">
+    <div class="featured-left reveal">
+      <div class="featured-tag">
+        <span class="featured-tag-line"></span>
+        <span class="featured-tag-label" data-es>Nuevo · Acceso restringido</span>
+        <span class="featured-tag-label" data-en>New · Restricted access</span>
+      </div>
+      <h2 class="featured-h2" data-es>Ocultamiento de datos · <em>Sistema SATJE</em></h2>
+      <h2 class="featured-h2" data-en>Data Concealment · <em>SATJE System</em></h2>
+      <p class="featured-desc" data-es>Solicitamos al juzgador competente la reserva de sus datos personales en el portal de consulta pública del Consejo de la Judicatura. Protegemos su nombre, identidad y reputación frente a procesos que ya no deberían definirlo públicamente.</p>
+      <p class="featured-desc" data-en>We petition the competent judge to seal your personal data in the Judiciary Council's public consultation portal. We protect your name, identity, and reputation from proceedings that should no longer define you publicly.</p>
+
+      <div class="req-block">
+        <div class="req-label" data-es>Para acceder a este servicio se requiere</div>
+        <div class="req-label" data-en>Eligibility requirements</div>
+        <ul class="req-list">
+          <li data-es><strong>Sentencia ratificatoria de estado de inocencia</strong>, o bien</li>
+          <li data-en><strong>Ratifying ruling of innocence</strong>, or</li>
+          <li data-es><strong>Proceso judicial en estado de archivo</strong></li>
+          <li data-en><strong>Judicial proceeding in archived status</strong></li>
+        </ul>
+        <p class="req-note" data-es>Sin alguno de estos presupuestos jurídicos, no es legalmente viable solicitar la reserva. Evaluamos cada caso antes de asumirlo.</p>
+        <p class="req-note" data-en>Without one of these legal prerequisites, sealing cannot be lawfully requested. We assess every case before accepting it.</p>
+      </div>
+
+      <a href="contacto.html?area=satje" class="btn-primary" style="width:fit-content;" data-es>Evaluar mi caso →</a>
+      <a href="contacto.html?area=satje" class="btn-primary" style="width:fit-content;" data-en>Assess my case →</a>
+    </div>
+    <div class="featured-right reveal">
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--s1);" data-es>¿Qué cubre la gestión?</div>
+      <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:var(--s1);" data-en>What the service covers</div>
+      <div class="feat-bullet"><span class="feat-bullet-dot"></span><span class="feat-bullet-text" data-es>Reserva de nombres, apellidos y cédula en SATJE</span><span class="feat-bullet-text" data-en>Sealing of names and ID number in SATJE</span></div>
+      <div class="feat-bullet"><span class="feat-bullet-dot"></span><span class="feat-bullet-text" data-es>Ocultamiento de actuaciones con datos sensibles</span><span class="feat-bullet-text" data-en>Concealment of records with sensitive data</span></div>
+      <div class="feat-bullet"><span class="feat-bullet-dot"></span><span class="feat-bullet-text" data-es>Protección reforzada de menores de edad</span><span class="feat-bullet-text" data-en>Reinforced protection of minors</span></div>
+      <div class="feat-bullet"><span class="feat-bullet-dot"></span><span class="feat-bullet-text" data-es>Requerimiento escrito y fundamentado ante el juzgador</span><span class="feat-bullet-text" data-en>Written, substantiated request before the judge</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM — golden -->
+<div class="cta-bottom reveal">
+  <div>
+    <h2 class="cta-bottom-title" data-es>¿No sabe qué servicio necesita? <em>Cuéntenos su caso.</em></h2>
+    <h2 class="cta-bottom-title" data-en>Not sure which service you need? <em>Tell us your case.</em></h2>
+    <p class="cta-bottom-sub" data-es>Evaluamos si su caso es jurídicamente viable antes de asumirlo.</p>
+    <p class="cta-bottom-sub" data-en>We assess whether your case is legally viable before accepting it.</p>
+  </div>
+  <a href="contacto.html" class="cta-bottom-btn"><span data-es>Contactar ahora</span><span data-en>Contact now</span> →</a>
+</div>
+
+<footer>
+  <div class="footer-logo">Pedro Cordova <span>— Abogado</span></div>
+  <ul class="footer-links">
+    <li><a href="sobre-mi.html" data-es>Sobre Mí</a><a href="sobre-mi.html" data-en>About</a></li>
+    <li><a href="servicios.html" data-es>Servicios</a><a href="servicios.html" data-en>Services</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contacto.html" data-es>Contacto</a><a href="contacto.html" data-en>Contact</a></li>
+  </ul>
+  <ul class="footer-socials">
+    <li><a href="https://linkedin.com/in/pedrojcordovaec" target="_blank" class="social-link" aria-label="LinkedIn">in</a></li>
+    <li><a href="https://wa.me/593999751274" target="_blank" class="social-link" aria-label="WhatsApp">●</a></li>
+    <li><a href="/cdn-cgi/l/email-protection#0e7e646d60617a6768676d6f6d6761606b7d4e69636f6762206d6163" class="social-link" aria-label="Email">✉</a></li>
+  </ul>
+  <div class="footer-bottom">© 2026 Pedro Cordova · <span data-es>Todos los derechos reservados</span><span data-en>All rights reserved</span></div>
+</footer>
+
+<div id="tweaks-panel">
+  <div class="tweaks-title">Tweaks</div>
+  <div class="tweak-row">
+    <span class="tweak-label" data-es>Idioma</span><span class="tweak-label" data-en>Language</span>
+    <div class="toggle-group">
+      <div class="toggle-opt active" id="tw-lang-es" onclick="setLang('es')">ES</div>
+      <div class="toggle-opt" id="tw-lang-en" onclick="setLang('en')">EN</div>
+    </div>
+  </div>
+  <div class="tweak-row">
+    <span class="tweak-label">Acento</span>
+    <div class="toggle-group">
+      <div class="toggle-opt active" onclick="setAccent('#8B6F47',this)">Tierra</div>
+      <div class="toggle-opt" onclick="setAccent('#5A6B4E',this)">Verde</div>
+      <div class="toggle-opt" onclick="setAccent('#4A5E73',this)">Azul</div>
+    </div>
+  </div>
+</div>
+
+<a href="https://wa.me/593999751274?text=Hola%20Ab.%20Cordova%2C%20me%20gustar%C3%ADa%20una%20consulta%20legal." target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function initLang(){const saved=localStorage.getItem('pc-lang-user-choice');if(saved==='en'){document.body.classList.add('lang-en');const b=document.getElementById('lang-btn');if(b)b.textContent='ES';syncLangToggles('en');}else{document.body.classList.remove('lang-en');const b=document.getElementById('lang-btn');if(b)b.textContent='EN';syncLangToggles('es');}}
+function toggleLang(){setLang(document.body.classList.contains('lang-en')?'es':'en');}
+function setLang(lang){document.body.classList.toggle('lang-en',lang==='en');const b=document.getElementById('lang-btn');if(b)b.textContent=lang==='es'?'EN':'ES';localStorage.setItem('pc-lang-user-choice',lang);localStorage.setItem('pc-lang',lang);syncLangToggles(lang);}
+function syncLangToggles(lang){const es=document.getElementById('tw-lang-es'),en=document.getElementById('tw-lang-en');if(es)es.classList.toggle('active',lang==='es');if(en)en.classList.toggle('active',lang==='en');}
+function initAccent(){const saved=localStorage.getItem('pc-accent');if(saved)document.documentElement.style.setProperty('--accent',saved);}
+function setAccent(color,el){document.querySelectorAll('.toggle-opt').forEach(o=>{if(o.parentElement===el.parentElement)o.classList.remove('active');});el.classList.add('active');document.documentElement.style.setProperty('--accent',color);localStorage.setItem('pc-accent',color);}
+function initTweaks(){window.addEventListener('message',e=>{if(e.data?.type==='__activate_edit_mode')document.getElementById('tweaks-panel')?.classList.add('open');if(e.data?.type==='__deactivate_edit_mode')document.getElementById('tweaks-panel')?.classList.remove('open');});window.parent.postMessage({type:'__edit_mode_available'},'*');}
+function initReveal(){const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));}
+function initNav(){const page=location.pathname.split('/').pop()||'index.html';document.querySelectorAll('.nav-links a').forEach(a=>{if(a.getAttribute('href')===page)a.classList.add('active');});}
+function initPhoto(){const imgs=document.querySelectorAll('[data-photo]');if(window.PEDRO_PHOTO)imgs.forEach(img=>img.src=window.PEDRO_PHOTO);}
+document.addEventListener('DOMContentLoaded',()=>{initLang();initAccent();initTweaks();initReveal();initNav();initPhoto();});
+</script>
+</body>
+</html>
